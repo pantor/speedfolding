@@ -1,0 +1,33 @@
+{
+    "instructions": [
+        {
+            "folding-lines": [
+                [[516, 750], [516, 50]],
+                [[180, 386], [880, 386]]
+            ],
+            "grasp-points": null
+        },
+        {
+            "folding-lines": [
+                [[180, 386], [880, 386]],
+                [[516, 750], [516, 50]]
+            ],
+            "grasp-points": null
+        },
+        {
+            "folding-lines": [
+                [[516, 50], [516, 750]],
+                [[180, 386], [880, 386]]
+            ],
+            "grasp-points": null
+        },
+        {
+            "folding-lines": [
+                [[880, 386], [180, 386]],
+                [[516, 750], [516, 50]]
+            ],
+            "grasp-points": null
+        }
+    ]
+    
+}

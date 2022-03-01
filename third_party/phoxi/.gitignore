@@ -1,0 +1,14 @@
+.vscode/
+.cache
+.eggs
+**/__pycache__
+*~
+*.pyc
+*.egg-info
+
+build/
+dist
+*.so
+PhotoneoLogFiles/
+
+pybind11
