@@ -1,5 +1,5 @@
 <div align="center">
-  <h1 align="center">Speedfolding</h1>
+  <h1 align="center">SpeedFolding</h1>
   <h3 align="center">
      Learning Efficient Bimanual Folding of Garments
   </h3>
@@ -12,7 +12,7 @@
  <br>
 </p>
 
-This repository contains the code for [Speedfolding: Learning Efficient Bimanual Folding of Garments](https://pantor.github.io/speedfolding), with the corresponding paper submitted to the 2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2022). The code is not meant to be easily runnable, as it depends tightly on the hardware setup including the ABB Yumi robot and a Photoneo PhoXi camera. We recommend to see it more as a reference implementation, in particular for our [BiMama-Net]() architecture.
+This repository contains the code for [SpeedFolding: Learning Efficient Bimanual Folding of Garments](https://pantor.github.io/speedfolding), with the corresponding paper submitted to the 2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2022). The code is not meant to be easily runnable, as it depends tightly on the hardware setup including the ABB Yumi robot and a Photoneo PhoXi camera. We recommend to see it more as a reference implementation, in particular for our [BiMama-Net]() architecture.
 
 
 ## Installation
