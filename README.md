@@ -1,7 +1,7 @@
 <div align="center">
   <h1 align="center">SpeedFolding</h1>
   <h3 align="center">
-     Learning Efficient Bimanual Folding of Garments
+    Learning Efficient Bimanual Folding of Garments
   </h3>
 </div>
 
@@ -12,19 +12,19 @@
  <br>
 </p>
 
-This repository contains the code for [SpeedFolding: Learning Efficient Bimanual Folding of Garments](https://pantor.github.io/speedfolding), with the corresponding paper under review at the 2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2022). The code is not meant to be easily runnable, as it depends tightly on the hardware setup including the ABB Yumi robot and a Photoneo PhoXi camera. We recommend to see it more as a reference implementation, in particular for our [BiMama-Net]() architecture.
+This repository contains the code for [SpeedFolding: Learning Efficient Bimanual Folding of Garments](https://pantor.github.io/speedfolding), with the corresponding paper under review at the 2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2022). The code is not meant to be easily runnable, as it depends tightly on the hardware setup including the ABB Yumi robot and a Photoneo PhoXi camera. We recommend to see it as a reference implementation, in particular for our [BiMama-Net](https://github.com/pantor/speedfolding/tree/main/learning/bimama) architecture.
 
 
 ## Installation
 
-The Speedfolding code depends on [abb_librws](https://github.com/mjd3/abb_librws/tree/18f6b42df6b0bb30fb608048911073edb4c71d5b), the [SDK](https://www.photoneo.com/support/) for Photoneo PhoXi camera, as well as on the relevant NVIDIA driver and CUDA installation for PyTorch. Further Python (3.6+) dependencies can then be installed via
+The SpeedFolding code depends on [abb_librws](https://github.com/mjd3/abb_librws/tree/18f6b42df6b0bb30fb608048911073edb4c71d5b), the [SDK](https://www.photoneo.com/support/) for Photoneo PhoXi camera, as well as on the relevant NVIDIA driver and CUDA installation for PyTorch. Further Python (3.6+) dependencies can then be installed via
 
 ```
 pip install -r requirements.txt
 pip install -e third_party/*
 ```
 
-The `third_party` components, namely a planner and a camera wrapper, are written in C++ and use pybind11 to expose Python funcionality. For running the scripts, make sure to have both the `learning` and `manipulation` directory in your `PYTHONPATH`.
+The `third_party` components, namely an [OMPL](http://ompl.kavrakilab.org) planner and a PhoXi camera wrapper, are written in C++ and use [pybind11](https://pybind11.readthedocs.io/en/stable/) to expose Python funcionality. Before running the scripts, make sure to have both the `learning` and `manipulation` directory in your `PYTHONPATH`.
 
 
 ## Structure
