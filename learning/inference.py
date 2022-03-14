@@ -10,7 +10,7 @@ from torchvision import transforms
 
 from classification.model import PrimitivesClassifier, FlingToFoldClassifier
 from database import Database
-from drawing import draw_pose_circle, draw_mask, draw_filled_mask
+from drawing import draw_pose_circle
 from heuristics.planar_transform import PlanarTransform
 from reward import segment
 
@@ -29,8 +29,8 @@ class Inference:
 
         self.img_size = (256, 192)
 
-        self.left_mask_path = np.array([(0, 174), (0, 36), (24, 24), (48, 18), (96, 24), (148, 48), (186, 75), (231, 148), (236, 186)])
-        self.right_mask_path = np.array([(30, 176), (35, 150), (70, 77), (96, 52), (160, 26), (255, 22), (255, 186)])
+        self.left_mask = np.load('data/masks/left.npy')
+        self.right_mask = np.load('data/masks/right.npy')
 
         self.label_to_primitive = ['fling', 'fling-to-fold'] if 'f2f' in primitives_model_name else ['fling', 'pick-and-hold', 'drag', 'done']
         self.is_depth_image_scaled = is_depth_image_scaled
@@ -91,11 +91,6 @@ class Inference:
         if action_type == 'fling' or action_type == 'fling-to-fold' or action_type == 'drag':
             pick_left, pick_right = self.experiment.assign_to_arm(pick1, pick2)
             pick_left, pick_right, left_sign, right_sign, left_place_diff, right_place_diff = self.experiment.optimize_angle_a_for_reachability(pick_left, pick_right)
-
-            if pick_left.translation[1] < -0.24 or pick_right.translation[1] > 0.24:
-                if verbose:
-                    logger.warning(f"Left or right pick point is too far to the other side: {pick_left.translation} | {pick_right.translation}")
-                return None
 
             # Check not only for pick points, but also for rotated and shifted grasp pose
             joints_left, joints_right = self.experiment.model.ik(pick_left, pick_right)
@@ -190,10 +185,6 @@ class Inference:
         img = self.transform_input(image)
         _, info = segment(image.color.raw_data)
 
-        left_mask = draw_filled_mask(self.left_mask_path, img.shape[:2])
-        right_mask = draw_filled_mask(self.right_mask_path, img.shape[:2])
-        # cv.imwrite('data/current/test.png', 255*left_mask)
-
         pre_processing = time()
         timing['pre_processing'] = pre_processing - start
         
@@ -213,7 +204,7 @@ class Inference:
         action_time = time()
         timing['action_type'] = action_time - pre_processing
 
-        action_iterator, heatmaps, nn_timing = self.prediction.predict(img, selection=selection, action_type=action_type, left_mask=left_mask, right_mask=right_mask, return_timing=True)
+        action_iterator, heatmaps, nn_timing = self.prediction.predict(img, selection=selection, action_type=action_type, left_mask=self.left_mask, right_mask=self.right_mask, return_timing=True)
 
         nn_prediction = time()
         timing['nn'] = nn_timing
@@ -266,8 +257,6 @@ class Inference:
 
             overlay = cv.addWeighted(img_draw, 0.65, vis, 0.35, 0)
 
-            draw_mask(overlay, mask=self.left_mask_path, color=(100, 220, 255), polygon=True, fill=True)
-            draw_mask(overlay, mask=self.right_mask_path, color=(255, 220, 100), polygon=True, fill=True)
             draw_pose_circle(overlay, poses[0], (255, 255, 255))
             draw_pose_circle(overlay, poses[1], (255, 255, 255), rect=True)
             cv.imwrite('data/current/heatmap.png', overlay)

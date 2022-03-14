@@ -1,4 +1,4 @@
-opencv-python-headless # Headless for docker container
+opencv-python
 numpy
 pyclipper
 tqdm
@@ -9,5 +9,7 @@ uvicorn[standard]
 python-multipart
 requests
 
-torch==1.10.1+cu113
-torchvision==0.11.2+cu113
+torch
+torchvision
+
+pybind11

@@ -157,7 +157,6 @@ class Experiment:
                 left = left * cls.get_transform(c=-np.pi-dc, frame='l_tcp')
                 left_sign *= -1.0
 
-            # print(relative_right.translation, right.translation, right.euler_angles)
             if relative_right.translation[1] < -0.03 and not -np.pi/2 < right.euler_angles[2] < np.pi/2 and left.translation[0] < 0.4:
                 dc = 0.5 if right.translation[1] > 0.08 else 0.42 if right.translation[1] > 0.04 else 0.2 if right.translation[1] > 0.0 else -0.4
                 right = right * cls.get_transform(c=-np.pi-dc, frame='r_tcp')
@@ -167,8 +166,6 @@ class Experiment:
             center = left.interpolate_with(right, t=0.5)
             relative_left = left.inverse() * center
             relative_right = right.inverse() * center
-
-        # print(left.translation, right.translation, distance)
         
         if left.translation[0] > 0.54 and abs(left.inverse().translation[1]) > 0.1 and distance > 0.18: # Far away on x
             sgn = 1.0 if left.inverse().translation[1] < 0.0 else -1.0
@@ -1452,54 +1449,6 @@ if __name__ == '__main__':
         mask, _ = segment(image_normal.color.data)
         instruction = exp.tm.get_matched_instruction(mask, template_name=args.instruction)
         exp.execute_fold(instruction, image_normal)
-
-    if args.check_calibration:
-        pixel = (686, 264)
-
-        image_normal, _ = exp.take_image()
-        points_3d = exp.get_pointcloud(image_normal)
-        pose = exp.pixel_to_transform(pixel, image_normal.shape, points_3d)
-        exp.y.left.goto_pose(pose, speed=exp.half_speed)
-        exp.y.left.sync()
-
-    if args.check_reachability:
-        pose_left = Experiment.get_transform(x=0.25, y=-0.16, z=0.06, a=np.pi, b=0.0, c=np.pi + 0.2, from_frame='l_tcp')
-        pose_right = Experiment.get_transform(x=0.45, y=-0.15, z=0.06, a=np.pi, b=0.0, c=np.pi - 0.9, from_frame='r_tcp')
-
-        pose_left, pose_right, _, _, _, _ = exp.optimize_angle_a_for_reachability(pose_left, pose_right)
-        
-        exp.y.left.goto_pose(pose_left, speed=exp.full_speed)
-        exp.y.right.goto_pose(pose_right, speed=exp.full_speed)
-
-        exp.y.left.sync()
-        exp.y.right.sync()
-
-    if args.exit:
-        with open(exp.local_data_path / 'exits' / args.exit / 'information.txt', 'r') as f:
-            action_type = f.readline().strip()
-        
-        if action_type == 'fling':
-            pick1 = RigidTransform.load(exp.local_data_path / 'exits' / args.exit / 'pose-0.tf')
-            pick2 = RigidTransform.load(exp.local_data_path / 'exits' / args.exit / 'pose-1.tf')
-            exp.fling(pick1, pick2)
-
-        elif action_type == 'pick-and-hold':
-            pick = RigidTransform.load(exp.local_data_path / 'exits' / args.exit / 'pose-0.tf')
-            place = RigidTransform.load(exp.local_data_path / 'exits' / args.exit / 'pose-1.tf')
-            hold = RigidTransform.load(exp.local_data_path / 'exits' / args.exit / 'pose-2.tf') if (exp.local_data_path / 'exits' / args.exit / 'pose-2.tf').exists() else None
-            exp.pick_and_hold(pick, place, hold)
-
-        elif action_type == 'pick-and-place':
-            pick1 = RigidTransform.load(exp.local_data_path / 'exits' / args.exit / 'pose-0.tf')
-            pick2 = RigidTransform.load(exp.local_data_path / 'exits' / args.exit / 'pose-1.tf')
-            place1 = RigidTransform.load(exp.local_data_path / 'exits' / args.exit / 'pose-2.tf')
-            place2 = RigidTransform.load(exp.local_data_path / 'exits' / args.exit / 'pose-3.tf')
-            exp.pick_and_place(pick1, pick2, place1, place2)
-
-        else:
-            raise Exception('action type not implemented yet')
-        
-        exp.home()
 
     if args.gen_rand_scene:
         image_normal, _ = exp.take_image()

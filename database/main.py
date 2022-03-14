@@ -11,7 +11,7 @@ import numpy as np
 from pydantic import BaseModel
 
 from database import Database
-from drawing import draw_action, draw_masked_area
+from drawing import draw_action
 
 
 base_path = Path(__file__).parent.absolute().parent / 'data'
@@ -90,13 +90,6 @@ async def get_image(collection: str, episode_id: str, action_id: str, scene: str
     if draw_pose:
         action = await get_action(collection, episode_id, action_id)
         draw_action(image, action)
-
-    if draw_mask:
-        draw_masked_area(
-            image,
-            mask_nn_input={'top': 0, 'right': 12, 'bottom': 116, 'left': 145},
-            mask_heatmap={'top': 45, 'right': 6, 'bottom': 16, 'left': 30},
-        )
 
     return send_image(image)
 

@@ -51,7 +51,7 @@ PYBIND11_MODULE(_omply, m) {
 
             KDL::Frame kdl_pose {
                 KDL::Rotation(pose(0, 0), pose(0, 1), pose(0, 2), pose(1, 0), pose(1, 1), pose(1, 2), pose(2, 0), pose(2, 1), pose(2, 2)),
-                KDL::Vector(pose(0, 3), pose(1, 4), pose(2, 3))
+                KDL::Vector(pose(0, 3), pose(1, 3), pose(2, 3))
             };
 
             KDL::Twist kdl_bounds {
