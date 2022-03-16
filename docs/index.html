@@ -76,13 +76,56 @@
     </section>
 
 
-    <section class="has-background-dark has-text-light" style="padding-top: 4rem; padding-bottom: 4rem;">
-      <div class="container p-4 has-text-centered">
+    <section class="has-background-black-ter has-text-light" style="padding-top: 4rem; padding-bottom: 4rem;">
+      <div class="container p-4">
         <h4 class="heading is-size-6 has-text-centered" style="margin-bottom: 2rem;">
           Conference Video
         </h4>
 
-        <iframe width="784" height="441" src="https://www.youtube.com/embed/em675-X2jfM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="has-text-centered">
+          <iframe width="784" height="441" src="https://www.youtube.com/embed/em675-X2jfM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div  class="mb-4" style="margin-top: 6rem;">
+          <h5 class="title has-text-light is-size-4">Set of Primitives</h5>
+          <p class="has-text-justified" style="max-width: 48rem;">
+            We define a set of <i>manipulation primitives</i> to smooth and then fold a garment from an arbitrary initial state.
+            Each primitive is parametrized by their <i>pick</i> or <i>place poses</i>, which are either learned or calculated by a heuristic.
+            In particular, we learn (1) the two pick poses for a fling primitive, (2) two pick poses for a drag primitive, and (3) the corresponding poses for a pick-and-place primitive.
+            For predicting these, we introduce the novel Bimama-Net architecture for BiManual Manipulation.
+          </p>
+          <div class="is-flex is-justify-content-space-between mt-4 mb-2">
+            <p class="has-text-light">
+              <b>Primitives for Smoothing</b>
+            </p>
+
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z"/>
+              </svg>
+            </div>
+          </div>
+          
+
+          <div class="mb-4" style="overflow-y: scroll;">
+            <div class="is-flex is-flex-direction-row is-flex-wrap-nowrap" style="min-width: 1360px">
+              <div class="mr-2">
+                <iframe width="448" height="252" src="https://www.youtube.com/embed/BG-Xfl6PIlk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p class="has-text-light">Fling Primitive</p>
+              </div>
+  
+              <div class="mr-2">
+                <iframe width="448" height="252" src="https://www.youtube.com/embed/Da5WEQVpkOM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p class="has-text-light">Drag Primitive</p>
+              </div>
+  
+              <div>
+                <iframe width="448" height="252" src="https://www.youtube.com/embed/Mr7ANvqhjS4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p class="has-text-light">Pick-and-place Primitive</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
