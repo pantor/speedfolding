@@ -3,6 +3,20 @@
   <h3 align="center">
     Learning Efficient Bimanual Folding of Garments
   </h3>
+  <p>
+    <a href="https://arxiv.org/abs/2208.10552">
+      <img src="https://img.shields.io/badge/Arxiv-2208.10552-red">
+    </a>
+    <a href="https://iros2022.org">
+      <img src="https://img.shields.io/badge/Conference-IROS 2022-green">
+    </a>
+    <a href="https://iros2022.org">
+      <img src="https://img.shields.io/badge/Finalist-Best Paper Award-inactive">
+    </a>
+    <a href="https://iros2022.org">
+      <img src="https://img.shields.io/badge/Finalist-Best RoboCup Paper Award-inactive">
+    </a>
+  </p>
 </div>
 
 <p align="center">
@@ -12,7 +26,7 @@
  <br>
 </p>
 
-This repository contains the code for [SpeedFolding: Learning Efficient Bimanual Folding of Garments](https://pantor.github.io/speedfolding), with the corresponding paper under review at the 2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2022). The code is not meant to be easily runnable, as it depends tightly on the hardware setup including the ABB Yumi robot and a Photoneo PhoXi camera. We recommend to see it as a reference implementation, in particular for our [BiMama-Net](https://github.com/pantor/speedfolding/tree/main/learning/bimama) architecture.
+This repository contains the code for [SpeedFolding: Learning Efficient Bimanual Folding of Garments](https://pantor.github.io/speedfolding), with the [corresponding paper](https://arxiv.org/abs/2208.10552) accepted at the 2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2022) in Kyoto. The code is not meant to be easily runnable, as it depends tightly on the hardware setup including the ABB Yumi robot and a Photoneo PhoXi camera. We recommend to see it as a reference implementation, in particular for our [BiMama-Net](https://github.com/pantor/speedfolding/tree/main/learning/bimama) architecture.
 
 
 ## Installation
