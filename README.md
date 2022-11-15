@@ -11,10 +11,10 @@
       <img src="https://img.shields.io/badge/Conference-IROS 2022-green">
     </a>
     <a href="https://iros2022.org">
-      <img src="https://img.shields.io/badge/Finalist-Best Paper Award-inactive">
+      <img src="https://img.shields.io/badge/Best Paper Award-grey">
     </a>
     <a href="https://iros2022.org">
-      <img src="https://img.shields.io/badge/Finalist-Best RoboCup Paper Award-inactive">
+      <img src="https://img.shields.io/badge/Best RoboCup Paper Award-grey">
     </a>
   </p>
 </div>
